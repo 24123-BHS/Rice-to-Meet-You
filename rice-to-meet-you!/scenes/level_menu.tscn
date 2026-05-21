@@ -1,10 +1,10 @@
-[gd_scene format=3 uid="uid://c687avnubqrxq"]
+[gd_scene format=3 uid="uid://bw7tinjbwrjqj"]
 
-[ext_resource type="Script" uid="uid://clv5vv55j086e" path="res://scripts/level_menu.gd" id="1_yl4fo"]
+[ext_resource type="Script" uid="uid://dico8075djqhp" path="res://scripts/level_menu.gd" id="1_yl4fo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yl65h"]
 
-[node name="level menu" type="Control" unique_id=271882678]
+[node name="LevelMenu" type="Control" unique_id=2103800979]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yl4fo")
 
-[node name="Panel" type="Panel" parent="." unique_id=387008946]
+[node name="Panel" type="Panel" parent="." unique_id=571540264]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,19 +22,20 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yl65h")
 
-[node name="Button" type="Button" parent="." unique_id=760935378]
+[node name="Button" type="Button" parent="." unique_id=2142275439]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -31.0
-offset_top = -15.5
-offset_right = 31.0
-offset_bottom = 15.5
+offset_left = -67.5
+offset_top = -33.75
+offset_right = 67.5
+offset_bottom = 33.75
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 20
 text = "Level 1"
 
 [connection signal="pressed" from="Button" to="." method="_on_level1_pressed"]

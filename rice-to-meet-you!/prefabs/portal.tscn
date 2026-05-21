@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://b5kt88kiq4wbh"]
+
+[ext_resource type="Script" uid="uid://c2fhhr81wklne" path="res://scripts/portal.gd" id="1_y2eew"]
+[ext_resource type="Texture2D" uid="uid://ccmoxybplv7xn" path="res://sprites/door_open.png" id="2_srbon"]
+[ext_resource type="Texture2D" uid="uid://rxckom4y4dvh" path="res://sprites/door_open_top.png" id="3_4ooq7"]
+[ext_resource type="AudioStream" uid="uid://tfwey51jpw8g" path="res://Sounds/sfx_gem.ogg" id="4_4ooq7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5xbjy"]
+size = Vector2(64, 128)
+
+[node name="portal" type="Area2D" unique_id=106630474]
+script = ExtResource("1_y2eew")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1932020825]
+position = Vector2(0, -32)
+texture = ExtResource("2_srbon")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1189413299]
+position = Vector2(0, -96)
+texture = ExtResource("3_4ooq7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=559970118]
+position = Vector2(0, -64)
+shape = SubResource("RectangleShape2D_5xbjy")
+
+[node name="nextlevel" type="AudioStreamPlayer" parent="." unique_id=1231855710]
+stream = ExtResource("4_4ooq7")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bxg4to4tpwhuj"]
+
+[ext_resource type="Script" uid="uid://b2gkjvns4di3e" path="res://scripts/endgame.gd" id="1_dugu8"]
+[ext_resource type="AudioStream" uid="uid://bgtgyawkhnugd" path="res://Sounds/sfx_select.ogg" id="2_577wx"]
+
+[node name="endgame" type="Node2D" unique_id=1022322852]
+script = ExtResource("1_dugu8")
+
+[node name="Button" type="Button" parent="." unique_id=487857285]
+offset_left = 528.0
+offset_top = 304.0
+offset_right = 616.0
+offset_bottom = 335.0
+text = "Play Again"
+
+[node name="press" type="AudioStreamPlayer" parent="Button" unique_id=807369179]
+stream = ExtResource("2_577wx")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
