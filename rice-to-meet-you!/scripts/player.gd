@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 		jump_count = 0
 	
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and jump_count < max_jumps:
+	if Input.is_action_just_pressed("jump") and jump_count < max_jumps:
 		velocity.y = JUMP_VELOCITY
 		jump_count += 1
 		jumpsound.play()
@@ -39,7 +39,7 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
+	var direction := Input.get_axis("left", "right")
 	if direction:
 		if dashing:
 			velocity.x = direction * DASH_SPEED
