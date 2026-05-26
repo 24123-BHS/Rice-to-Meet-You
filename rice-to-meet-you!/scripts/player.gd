@@ -12,17 +12,37 @@ var start_position = Vector2(576,184)
 var jump_count = 0
 var max_jumps = 2
 
+var is_x_locked: bool = false
+var locked_x_position: float = 0.0
+
 const DASH_SPEED = 900.0
 var dashing = false
 var can_dash = true
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+	
+		# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
+#asked AI
+	# Check if the player is holding down the lock key
+	if Input.is_action_pressed("lock"):
+		if not is_x_locked:
+			# Capture the exact X coordinate the moment the key is held
+			locked_x_position = global_position.x
+			is_x_locked = true
+		
+		# Hard-lock the X coordinate to prevent any horizontal movement
+		global_position.x = locked_x_position
+		velocity.x = 0
+	else:
+		# Reset lock when key is released
+		is_x_locked = false
+#end of asking AI
 	if is_on_floor():
 		jump_count = 0
+	
 	
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and jump_count < max_jumps:
