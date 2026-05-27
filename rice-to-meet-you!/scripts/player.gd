@@ -11,6 +11,7 @@ var start_position = Vector2(576,184)
 #Jump count
 var jump_count = 0
 var max_jumps = 2
+var rotation_dir = 0
 
 var is_x_locked: bool = false
 var locked_x_position: float = 0.0
@@ -45,7 +46,7 @@ func _physics_process(delta: float) -> void:
 	
 	
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and jump_count < max_jumps:
+	if Input.is_action_just_pressed("jump") and jump_count < max_jumps and is_x_locked == false:
 		velocity.y = JUMP_VELOCITY
 		jump_count += 1
 		jumpsound.play()
@@ -72,6 +73,7 @@ func _physics_process(delta: float) -> void:
 			animation.flip_h = false
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		
 
 	move_and_slide()
 
@@ -82,6 +84,11 @@ func _physics_process(delta: float) -> void:
 			animation.play("idle")
 	else:
 		animation.play("jump")
+		
+	if Input.is_action_pressed("up"):
+		animation.play("up")
+	if Input.is_action_pressed("down"):
+		animation.play("down")
 	
 
 	# Handle respawn
