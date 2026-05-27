@@ -1,0 +1,16 @@
+extends Node2D
+
+@onready var path_follow : PathFollow2D = $Path2D/PathFollow2D
+#will be speed in pixels per second
+@export var speed = 100
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	path_follow.progress += speed * delta
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.name == "player":
+		print("Ouch")
+		body.respawn()
+
+#to make their paths unique, you must drag the prefab directly onto the scene.
