@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bvgk74jo512l6"]
+
+[ext_resource type="Script" uid="uid://b02wicooiq83c" path="res://scripts/bullet.gd" id="1_fh0yl"]
+[ext_resource type="Texture2D" uid="uid://dkp0ypgsdrajs" path="res://icon.svg" id="2_lv25w"]
+
+[node name="bullet" type="Node2D" unique_id=1623684213]
+script = ExtResource("1_fh0yl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1345861851]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_lv25w")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=793360306]
+rect = Rect2(-64, -64, 128, 128)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
