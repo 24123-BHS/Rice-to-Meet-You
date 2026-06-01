@@ -17,8 +17,10 @@ modulate = Color(0, 0, 0, 0.21568628)
 z_index = -1
 texture = ExtResource("1_5mcpd")
 
-[node name="Marker2D" type="Marker2D" parent="RotationOffset/Sprite2D" unique_id=34408795]
+[node name="shoot_pos" type="Marker2D" parent="RotationOffset/Sprite2D" unique_id=34408795]
 position = Vector2(64, 0)
 
 [node name="ShootTimer" type="Timer" parent="." unique_id=491484229]
 one_shot = true
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
