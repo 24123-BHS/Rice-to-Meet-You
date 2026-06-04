@@ -9,7 +9,7 @@ script = ExtResource("1_cxs04")
 [node name="RotationOffset" type="Node2D" parent="." unique_id=1762006632]
 
 [node name="Sprite2D" type="Sprite2D" parent="RotationOffset" unique_id=1453371817]
-scale = Vector2(1, 0.18750001)
+position = Vector2(-1.9073486e-06, 2.3841858e-07)
 texture = ExtResource("1_5mcpd")
 
 [node name="shadow" type="Sprite2D" parent="RotationOffset/Sprite2D" unique_id=1849124852]
@@ -18,7 +18,7 @@ z_index = -1
 texture = ExtResource("1_5mcpd")
 
 [node name="shoot_pos" type="Marker2D" parent="RotationOffset/Sprite2D" unique_id=34408795]
-position = Vector2(64, 0)
+position = Vector2(64, -2.3841858e-07)
 
 [node name="ShootTimer" type="Timer" parent="." unique_id=491484229]
 one_shot = true

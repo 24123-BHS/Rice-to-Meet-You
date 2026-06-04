@@ -1,5 +1,7 @@
 extends Node2D
 
+const bullet_scene = preload("res://prefabs/bullet.tscn")
+
 @onready var rotation_offset: Node2D = $RotationOffset
 @onready var shadow: Sprite2D = $RotationOffset/Sprite2D/shadow
 @onready var shoot_pos: Marker2D = $RotationOffset/Sprite2D/shoot_pos
@@ -18,9 +20,14 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("shoot") and can_shoot:
 		can_shoot = false
 		$ShootTimer.start()
+		print("shoot")
 		
 func _shoot():
-	pass
+	var new_bullet = bullet_scene.instantiate()
+	new_bullet.global_position = shoot_pos.global_position
+	new_bullet.global_rotation = shoot_pos.global_rotation
+	new_bullet.speed = 120
+	get_parent().add_child(new_bullet)
 
 func _on_shoot_timer_timeout() -> void:
 	can_shoot = true
