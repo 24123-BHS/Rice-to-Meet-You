@@ -18,16 +18,16 @@ func _process(delta: float) -> void:
 	shadow.position = Vector2(-2, 2).rotated(-rotation_offset.rotation)
 	
 	if Input.is_action_just_pressed("shoot") and can_shoot:
+		_shoot()
 		can_shoot = false
 		$ShootTimer.start()
-		print("shoot")
 		
 func _shoot():
 	var new_bullet = bullet_scene.instantiate()
+	get_parent().add_child(new_bullet)
 	new_bullet.global_position = shoot_pos.global_position
 	new_bullet.global_rotation = shoot_pos.global_rotation
 	new_bullet.speed = 120
-	get_parent().add_child(new_bullet)
 
 func _on_shoot_timer_timeout() -> void:
 	can_shoot = true

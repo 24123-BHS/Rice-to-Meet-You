@@ -4,12 +4,14 @@
 [ext_resource type="Script" uid="uid://cmtvs6xxpuv8i" path="res://scripts/gun.gd" id="1_cxs04"]
 
 [node name="Gun" type="Node2D" unique_id=1779342164]
+position = Vector2(3.0517578e-05, 3.8146973e-06)
 script = ExtResource("1_cxs04")
 
 [node name="RotationOffset" type="Node2D" parent="." unique_id=1762006632]
 
 [node name="Sprite2D" type="Sprite2D" parent="RotationOffset" unique_id=1453371817]
 position = Vector2(-1.9073486e-06, 2.3841858e-07)
+scale = Vector2(0.2634324, 0.09926174)
 texture = ExtResource("1_5mcpd")
 
 [node name="shadow" type="Sprite2D" parent="RotationOffset/Sprite2D" unique_id=1849124852]
