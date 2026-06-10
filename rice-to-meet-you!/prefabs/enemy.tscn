@@ -32,5 +32,6 @@ texture = ExtResource("1_6n8dw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2D" unique_id=99437068]
 shape = SubResource("RectangleShape2D_yfjof")
 
-[connection signal="body_entered" from="Path2D/PathFollow2D/Area2D" to="." method="_on_body_entered"]
+[connection signal="area_entered" from="Path2D/PathFollow2D/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Path2D/PathFollow2D/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Path2D/PathFollow2D/Area2D" to="." method="_on_body_entered"]

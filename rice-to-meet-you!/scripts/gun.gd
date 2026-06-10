@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 		
 func _shoot():
 	var new_bullet = bullet_scene.instantiate()
-	get_parent().add_child(new_bullet)
+	get_tree().root.add_child(new_bullet)
 	new_bullet.global_position = shoot_pos.global_position
 	new_bullet.global_rotation = shoot_pos.global_rotation
 	new_bullet.speed = 120

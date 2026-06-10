@@ -14,3 +14,10 @@ func _on_body_entered(body: Node2D) -> void:
 		body.respawn()
 
 #to make their paths unique, you must drag the prefab directly onto the scene.
+
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.name == "Bullet":
+		print("poof")
+		queue_free()

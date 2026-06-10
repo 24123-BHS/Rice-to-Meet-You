@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://cmtvs6xxpuv8i" path="res://scripts/gun.gd" id="1_cxs04"]
 
 [node name="Gun" type="Node2D" unique_id=1779342164]
-position = Vector2(3.0517578e-05, 3.8146973e-06)
 script = ExtResource("1_cxs04")
 
 [node name="RotationOffset" type="Node2D" parent="." unique_id=1762006632]
