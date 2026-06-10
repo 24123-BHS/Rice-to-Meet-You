@@ -4,12 +4,12 @@ extends Node2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var speed: float = 120.0
+var direction = Vector2.ZERO
 
 func _physics_process(delta: float) -> void:
-	global_position += Vector2(1, 0).rotated(rotation) * speed * delta
-	shadow.position = Vector2(-2,2).rotated(-rotation)
-	#if ray_cast_2d.is_colliding():
-		#animation_player.play("remove")
+	global_position += direction * speed * delta
+	#global_position += Vector2(1, 0).rotated(rotation) * speed * delta
+	#shadow.position = Vector2(-2,2).rotated(-rotation)
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
@@ -21,7 +21,7 @@ func _on_distance_timeout_timeout() -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group("player") == false:
+	if area.is_in_group("player") or area.is_in_group("Bullet") == false:
 		animation_player.play("remove")
 
 

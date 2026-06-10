@@ -96,7 +96,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lv25w"]
 size = Vector2(130.00002, 130.00002)
 
-[node name="Bullet" type="Area2D" unique_id=1286352415]
+[node name="Bullet" type="Area2D" unique_id=1286352415 groups=["Bullet"]]
 modulate = Color(1, 1, 1, 0)
 z_index = -1
 texture_filter = 1

@@ -10,14 +10,13 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "player":
-		print("Ouch")
 		body.respawn()
+		print("Ouch")
 
 #to make their paths unique, you must drag the prefab directly onto the scene.
 
 
-
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.name == "Bullet":
-		print("poof")
 		queue_free()
+		print("poof")
