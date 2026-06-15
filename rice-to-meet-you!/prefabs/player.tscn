@@ -109,7 +109,6 @@ animations = [{
 }]
 
 [node name="player" type="CharacterBody2D" unique_id=358164487 groups=["player"]]
-position = Vector2(0, -8)
 script = ExtResource("1_4dohe")
 metadata/_edit_group_ = true
 

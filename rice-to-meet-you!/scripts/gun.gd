@@ -47,7 +47,7 @@ func _shoot():
 	new_bullet.global_position = shoot_pos.global_position
 	new_bullet.direction = aim_dir
 	new_bullet.global_rotation = shoot_pos.global_rotation
-	new_bullet.speed = 120
+	new_bullet.speed = 200
 
 func _on_shoot_timer_timeout() -> void:
 	can_shoot = true

@@ -12,7 +12,7 @@ point_count = 3
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yfjof"]
 size = Vector2(32, 32)
 
-[node name="enemy" type="Node2D" unique_id=1671639136]
+[node name="enemy" type="Node2D" unique_id=1671639136 groups=["enemies"]]
 script = ExtResource("1_yfjof")
 metadata/_edit_group_ = true
 
