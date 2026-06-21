@@ -15,6 +15,10 @@ run/main_scene="uid://5070w2tohutv"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://poffbbj4r8e8"
+
 [global_group]
 
 player=""
