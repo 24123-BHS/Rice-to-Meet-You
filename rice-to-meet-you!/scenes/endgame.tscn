@@ -15,5 +15,6 @@ text = "Play Again"
 
 [node name="press" type="AudioStreamPlayer" parent="Button" unique_id=807369179]
 stream = ExtResource("2_577wx")
+bus = &"Sound Effects"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

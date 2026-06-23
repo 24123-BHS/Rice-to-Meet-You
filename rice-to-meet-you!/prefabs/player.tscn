@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dwdp8ne3lsw2f" path="res://prefabs/gun.tscn" id="6_g2jcq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_014kd"]
-size = Vector2(64, 64)
+size = Vector2(32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_opo22"]
 atlas = ExtResource("3_r66lb")
@@ -113,6 +113,7 @@ script = ExtResource("1_4dohe")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1464831086]
+position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_014kd")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1542876896]
@@ -126,12 +127,15 @@ autoplay = "idle"
 
 [node name="jumpsound" type="AudioStreamPlayer" parent="." unique_id=1005294404]
 stream = ExtResource("3_1txc5")
+bus = &"Sound Effects"
 
 [node name="deathsound" type="AudioStreamPlayer" parent="." unique_id=1416716000]
 stream = ExtResource("4_1txc5")
+bus = &"Sound Effects"
 
 [node name="dashsound" type="AudioStreamPlayer" parent="." unique_id=373932578]
 stream = ExtResource("5_ht1c8")
+bus = &"Sound Effects"
 
 [node name="dash_timer" type="Timer" parent="." unique_id=482112344]
 wait_time = 0.2
