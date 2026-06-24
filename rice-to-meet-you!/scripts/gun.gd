@@ -8,7 +8,7 @@ const bullet_scene = preload("res://prefabs/bullet.tscn")
 @onready var sprite_2d: Sprite2D = $RotationOffset/Sprite2D
 
 var time_between_shot: float = 0.25
-var aim_dir = Vector2(1, 0) # Default to aiming right
+var aim_dir = Vector2(1,0) # Default to aiming right
 var can_shoot: bool = true
 
 func _ready() -> void:
@@ -22,6 +22,7 @@ func _process(_delta: float) -> void:
 	# Get vector strictly for the arrow keys to prevent aiming from resetting to (0,0)
 		
 	var aim_vec: Vector2 = Input.get_vector("left", "right", "up", "down")
+
 	
 	if aim_vec != Vector2.ZERO:
 		aim_dir = aim_vec.round().normalized()
