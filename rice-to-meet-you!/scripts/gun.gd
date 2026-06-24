@@ -26,6 +26,9 @@ func _process(_delta: float) -> void:
 	
 	if aim_vec != Vector2.ZERO:
 		aim_dir = aim_vec.round().normalized()
+		rotation_offset.rotation = aim_dir.angle()
+	else:
+		aim_dir = Vector2(1, 0)
 		
 		# Rotate the gun pivot to look in the aim direction
 		rotation_offset.rotation = aim_dir.angle()
@@ -49,6 +52,7 @@ func _shoot():
 	new_bullet.direction = aim_dir
 	new_bullet.global_rotation = shoot_pos.global_rotation
 	new_bullet.speed = 200
+	print(aim_dir.angle())
 
 func _on_shoot_timer_timeout() -> void:
 	can_shoot = true
