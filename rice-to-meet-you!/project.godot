@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 buses/default_bus_layout="uid://poffbbj4r8e8"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [global_group]
 
 player=""
