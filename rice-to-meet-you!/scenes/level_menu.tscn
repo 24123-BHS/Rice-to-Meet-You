@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bw7tinjbwrjqj"]
 
 [ext_resource type="Script" uid="uid://dico8075djqhp" path="res://scripts/level_menu.gd" id="1_yl4fo"]
+[ext_resource type="PackedScene" uid="uid://qbxa7k8taf53" path="res://prefabs/level_select_button.tscn" id="2_rj3wb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yl65h"]
 
@@ -22,20 +23,39 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yl65h")
 
-[node name="Button" type="Button" parent="." unique_id=2142275439]
+[node name="Label" type="Label" parent="." unique_id=1999526126]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -67.5
-offset_top = -33.75
-offset_right = 67.5
-offset_bottom = 33.75
+offset_left = -256.0
+offset_right = 256.0
+offset_bottom = 128.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 20
-text = "Level 1"
+theme_override_font_sizes/font_size = 70
+text = "Level Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[connection signal="pressed" from="Button" to="." method="_on_level1_pressed"]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1520199602]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -576.0
+offset_top = -504.0
+offset_right = 576.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer" unique_id=455056161]
+layout_mode = 2
+columns = 2
+
+[node name="LevelSelectButton" parent="CenterContainer/GridContainer" unique_id=10464423 instance=ExtResource("2_rj3wb")]
+layout_mode = 2
+
+[node name="LevelSelectButton2" parent="CenterContainer/GridContainer" unique_id=462953943 instance=ExtResource("2_rj3wb")]
+layout_mode = 2

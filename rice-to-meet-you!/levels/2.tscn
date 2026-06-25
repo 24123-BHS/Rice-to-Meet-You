@@ -1,16 +1,13 @@
 [gd_scene format=4 uid="uid://dkialug41j5ou"]
 
-[ext_resource type="PackedScene" uid="uid://03heaxibq4ly" path="res://prefabs/player.tscn" id="1_wo48x"]
-[ext_resource type="Texture2D" uid="uid://dpma1d3sku3l1" path="res://sprites/background_color_mushrooms.png" id="1_y0kc7"]
-[ext_resource type="PackedScene" uid="uid://bj5v0jlsdj2a8" path="res://prefabs/spike.tscn" id="2_y0kc7"]
-[ext_resource type="Texture2D" uid="uid://b6xeie0fq0m34" path="res://sprites/spritesheet-tiles-default.png" id="3_ne2mo"]
-[ext_resource type="Script" uid="uid://1ugmdps5i8ub" path="res://scripts/portal_2.gd" id="4_6cvei"]
-[ext_resource type="Texture2D" uid="uid://ccmoxybplv7xn" path="res://sprites/door_open.png" id="5_que50"]
-[ext_resource type="Texture2D" uid="uid://rxckom4y4dvh" path="res://sprites/door_open_top.png" id="6_hey2k"]
-[ext_resource type="AudioStream" uid="uid://5l3goqchyga6" path="res://Sounds/sfx_magic.ogg" id="8_ne2mo"]
+[ext_resource type="Texture2D" uid="uid://dpma1d3sku3l1" path="res://sprites/background_color_mushrooms.png" id="1_qlf6b"]
+[ext_resource type="PackedScene" uid="uid://03heaxibq4ly" path="res://prefabs/player.tscn" id="2_ju3oa"]
+[ext_resource type="PackedScene" uid="uid://bj5v0jlsdj2a8" path="res://prefabs/spike.tscn" id="3_6m8fj"]
+[ext_resource type="Texture2D" uid="uid://b6xeie0fq0m34" path="res://sprites/spritesheet-tiles-default.png" id="4_iml60"]
+[ext_resource type="PackedScene" uid="uid://b5kt88kiq4wbh" path="res://prefabs/portal.tscn" id="5_pjcgy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_172wr"]
-texture = ExtResource("3_ne2mo")
+texture = ExtResource("4_iml60")
 separation = Vector2i(1, 1)
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -365,9 +362,6 @@ tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_172wr")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fldb1"]
-size = Vector2(64, 128)
-
 [node name="level_2" type="Node2D" unique_id=1564528804]
 
 [node name="Background" type="Parallax2D" parent="." unique_id=1390391698]
@@ -377,44 +371,25 @@ repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Background" unique_id=457355512]
 scale = Vector2(2.25, 2.25)
-texture = ExtResource("1_y0kc7")
+texture = ExtResource("1_qlf6b")
 centered = false
 offset = Vector2(0, -205.975)
 
-[node name="player" parent="." unique_id=358164487 instance=ExtResource("1_wo48x")]
+[node name="player" parent="." unique_id=358164487 instance=ExtResource("2_ju3oa")]
 position = Vector2(584, 184)
 
-[node name="spike" parent="." unique_id=973675651 instance=ExtResource("2_y0kc7")]
+[node name="spike" parent="." unique_id=973675651 instance=ExtResource("3_6m8fj")]
 position = Vector2(928, 256)
 
-[node name="spike2" parent="." unique_id=536761042 instance=ExtResource("2_y0kc7")]
+[node name="spike2" parent="." unique_id=536761042 instance=ExtResource("3_6m8fj")]
 position = Vector2(1632, 0)
 
-[node name="spike3" parent="." unique_id=876458742 instance=ExtResource("2_y0kc7")]
+[node name="spike3" parent="." unique_id=876458742 instance=ExtResource("3_6m8fj")]
 position = Vector2(1952, 0)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1800873902]
 tile_map_data = PackedByteArray("AAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAALAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAANAAQAAAAAAAAAAAAOAAQAAAAAAAAAAAAPAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAARAAQAAAAAAAAAAAATAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAAUAAMAAAAAAAAAAAAVAAMAAAAAAAAAAAAVAAIAAAAAAAAAAAAWAAIAAAAAAAAAAAAWAAEAAAAAAAAAAAAXAAEAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_g2hoc")
 
-[node name="portal2" type="Area2D" parent="." unique_id=2144708897]
+[node name="portal" parent="." unique_id=106630474 instance=ExtResource("5_pjcgy")]
 position = Vector2(2336, 0)
-script = ExtResource("4_6cvei")
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="portal2" unique_id=1196903334]
-position = Vector2(0, -32)
-texture = ExtResource("5_que50")
-
-[node name="Sprite2D2" type="Sprite2D" parent="portal2" unique_id=1387772750]
-position = Vector2(0, -96)
-texture = ExtResource("6_hey2k")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="portal2" unique_id=772994948]
-position = Vector2(0, -64)
-shape = SubResource("RectangleShape2D_fldb1")
-
-[node name="victory" type="AudioStreamPlayer" parent="portal2" unique_id=882809966]
-stream = ExtResource("8_ne2mo")
-
-[connection signal="body_entered" from="portal2" to="portal2" method="_on_body_entered"]
