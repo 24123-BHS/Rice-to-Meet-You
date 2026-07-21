@@ -22,6 +22,10 @@ var can_dash = true
 
 func _physics_process(delta: float) -> void:
 	
+	var input_dir: Vector2 = Input.get_vector("left", "right", "up", "down")
+	
+	update_animation(input_dir)
+	
 		# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
