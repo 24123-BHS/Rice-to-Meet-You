@@ -26,7 +26,7 @@ func _process(_delta: float) -> void:
 	
 	if aim_vec != Vector2.ZERO:
 		aim_dir = aim_vec.round().normalized()
-		rotation_offset.rotation = aim_dir.angle()
+		#rotation_offset.rotation = aim_dir.angle()
 	else:
 		aim_dir = Vector2(1, 0)
 		
