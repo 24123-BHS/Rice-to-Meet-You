@@ -21,10 +21,9 @@ var dashing = false
 var can_dash = true
 
 func _physics_process(delta: float) -> void:
-	
 	var input_dir: Vector2 = Input.get_vector("left", "right", "up", "down")
-	
 	update_animation(input_dir)
+	
 	
 		# Add the gravity.
 	if not is_on_floor():
@@ -80,26 +79,47 @@ func _physics_process(delta: float) -> void:
 		
 
 	move_and_slide()
-
-	if is_on_floor():
-		if abs(velocity.x) > 0.1:
-			animation.play("run")
-		else:
-			animation.play("idle")
-	else:
-		animation.play("jump")
-		
-	if Input.is_action_pressed("up"):
-		animation.play("up")
-	if Input.is_action_pressed("down"):
-		animation.play("down")
-	
-
+#
 	# Handle respawn
 	if position.y > 900:
 		# Respawn 
 		respawn()
+
+func update_animation(dir: Vector2):
+	# If no buttons are pressed, default to a neutral look direction
+	if dir == Vector2.ZERO:
+		# You can let the last played animation continue or play an idle state
+		animation.play("idle_right") 
 		
+		# Normalize and round the vector to snap to strict 8-way coordinates (-1, 0, or 1)
+	var snap_dir = dir.normalized().round()
+	
+	# Manage horizontal mirroring (Flipping left animations using right sprites)
+	if snap_dir.x < 0:
+		animation.flip_h = true
+	elif snap_dir.x > 0:
+		animation.flip_h = false
+
+	# 3. Match the vector to the animation name
+	# We use abs() on X because flip_h handles the left side mirrors automatically
+	var x_sign = abs(snap_dir.x)
+	var y_sign = snap_dir.y
+
+	if is_on_floor():
+	# Combine X and Y states to find the combination
+		if x_sign > 0 and y_sign == 0 and abs(velocity.x) > 0.1 and is_x_locked == false:
+			animation.play("run_right")           # Right / Left
+		elif x_sign == 0 and y_sign < 0:
+			animation.play("idle_up")             # Straight Up
+		elif x_sign == 0 and y_sign > 0:
+			animation.play("idle_down")           # Straight Down
+		elif x_sign > 0 and y_sign < 0:
+			animation.play("idle_up_right")       # Diagonal Up-Right / Up-Left
+		elif x_sign > 0 and y_sign > 0:
+			animation.play("idle_down_right")     # Diagonal Down-Right / Down-Left
+		else:
+			animation.play("jump")
+
 		
 func respawn():
 	deathsound.play()

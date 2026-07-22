@@ -211,7 +211,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run_right",
-"speed": 5.0
+"speed": 18.0
 }, {
 "frames": [{
 "duration": 1.0,
