@@ -10,6 +10,7 @@ const JUMP_VELOCITY = -400.0
 var start_position = Vector2(576,184)
 #Jump count
 var jump_count = 0
+var in_air: bool = false
 var max_jumps = 2
 var rotation_dir = 0
 
@@ -46,10 +47,12 @@ func _physics_process(delta: float) -> void:
 #end of asking AI
 	if is_on_floor():
 		jump_count = 0
+		in_air = false
 	
 	
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and jump_count < max_jumps and is_x_locked == false:
+		in_air = true
 		velocity.y = JUMP_VELOCITY
 		jump_count += 1
 		jumpsound.play()
@@ -89,7 +92,7 @@ func update_animation(dir: Vector2):
 	# If no buttons are pressed, default to a neutral look direction
 	if dir == Vector2.ZERO:
 		# You can let the last played animation continue or play an idle state
-		animation.play("idle_right") 
+		animation.play("jump") 
 		
 		# Normalize and round the vector to snap to strict 8-way coordinates (-1, 0, or 1)
 	var snap_dir = dir.normalized().round()
@@ -105,20 +108,26 @@ func update_animation(dir: Vector2):
 	var x_sign = abs(snap_dir.x)
 	var y_sign = snap_dir.y
 
-	if is_on_floor():
+
 	# Combine X and Y states to find the combination
-		if x_sign > 0 and y_sign == 0 and abs(velocity.x) > 0.1 and is_x_locked == false:
-			animation.play("run_right")           # Right / Left
-		elif x_sign == 0 and y_sign < 0:
-			animation.play("idle_up")             # Straight Up
-		elif x_sign == 0 and y_sign > 0:
-			animation.play("idle_down")           # Straight Down
-		elif x_sign > 0 and y_sign < 0:
-			animation.play("idle_up_right")       # Diagonal Up-Right / Up-Left
-		elif x_sign > 0 and y_sign > 0:
-			animation.play("idle_down_right")     # Diagonal Down-Right / Down-Left
-		else:
-			animation.play("jump")
+	if in_air == true:
+		animation.play("jump")
+	elif x_sign > 0 and y_sign == 0 and abs(velocity.x) > 0.1 and is_x_locked == false:
+		animation.play("run_right")           # Run Right / Left
+	elif x_sign == 0 and y_sign < 0:
+		animation.play("idle_up")             # Straight Up
+	elif x_sign == 0 and y_sign > 0:
+		animation.play("idle_down")           # Straight Down
+	elif x_sign > 0 and y_sign < 0 and abs(velocity.x) > 0.1 and is_x_locked == false:
+		animation.play("run_up_right")        # Run Diagonal Up-Right / Up-Left
+	elif x_sign > 0 and y_sign > 0 and abs(velocity.x) > 0.1 and is_x_locked == false:
+		animation.play("run_down_right")      # Run Diagonal Down-Right / Down-Left
+	elif x_sign > 0 and y_sign < 0:
+		animation.play("idle_up_right")       # Diagonal Up-Right / Up-Left
+	elif x_sign > 0 and y_sign > 0:
+		animation.play("idle_down_right")     # Diagonal Down-Right / Down-Left
+	elif x_sign > 0 and y_sign == 0 or x_sign == 0 and y_sign == 0:
+		animation.play("idle_right")           # Run Right / Left
 
 		
 func respawn():
