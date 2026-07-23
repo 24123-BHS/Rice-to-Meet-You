@@ -291,7 +291,7 @@ wait_time = 0.2
 [node name="dash_cooldown_timer" type="Timer" parent="." unique_id=687937459]
 
 [node name="Gun" parent="." unique_id=1779342164 instance=ExtResource("6_g2jcq")]
-position = Vector2(0, 8)
+position = Vector2(0, 4)
 
 [connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="dash_cooldown_timer" to="." method="_on_dash_cooldown_timer_timeout"]

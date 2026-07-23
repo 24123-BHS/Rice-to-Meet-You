@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dwdp8ne3lsw2f"]
 
-[ext_resource type="Texture2D" uid="uid://dkp0ypgsdrajs" path="res://icon.svg" id="1_5mcpd"]
 [ext_resource type="Script" uid="uid://cmtvs6xxpuv8i" path="res://scripts/gun.gd" id="1_cxs04"]
+[ext_resource type="Texture2D" uid="uid://45bi0v7y34fn" path="res://sprites/Gun.png" id="2_37pk5"]
 
 [node name="Gun" type="Node2D" unique_id=1779342164]
 script = ExtResource("1_cxs04")
@@ -9,17 +9,17 @@ script = ExtResource("1_cxs04")
 [node name="RotationOffset" type="Node2D" parent="." unique_id=1762006632]
 
 [node name="Sprite2D" type="Sprite2D" parent="RotationOffset" unique_id=1453371817]
-position = Vector2(29, 0)
-scale = Vector2(0.2634324, 0.09926174)
-texture = ExtResource("1_5mcpd")
+position = Vector2(21, -5.9604645e-07)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_37pk5")
 
 [node name="shadow" type="Sprite2D" parent="RotationOffset/Sprite2D" unique_id=1849124852]
 modulate = Color(0, 0, 0, 0.21568628)
 z_index = -1
-texture = ExtResource("1_5mcpd")
+texture = ExtResource("2_37pk5")
 
 [node name="shoot_pos" type="Marker2D" parent="RotationOffset/Sprite2D" unique_id=34408795]
-position = Vector2(64, -2.3841858e-07)
+position = Vector2(38, 0)
 
 [node name="ShootTimer" type="Timer" parent="." unique_id=491484229]
 one_shot = true

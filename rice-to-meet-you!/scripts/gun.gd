@@ -9,6 +9,7 @@ const bullet_scene = preload("res://prefabs/bullet.tscn")
 
 var time_between_shot: float = 0.25
 var aim_dir = Vector2(1,0) # Default to aiming right
+var last_horizontal_dir = Vector2(1, 0)
 var can_shoot: bool = true
 
 func _ready() -> void:
@@ -20,27 +21,32 @@ func _process(_delta: float) -> void:
 		
 # --- AIMING ---
 	# Get vector strictly for the arrow keys to prevent aiming from resetting to (0,0)
-		
 	var aim_vec: Vector2 = Input.get_vector("left", "right", "up", "down")
-
 	
 	if aim_vec != Vector2.ZERO:
 		aim_dir = aim_vec.round().normalized()
 		#rotation_offset.rotation = aim_dir.angle()
-	#else:
-		#aim_dir = Vector2(1, 0)
+		
+# Update the baseline horizontal direction if they are pressing left or right
+		if aim_vec.x != 0:
+			last_horizontal_dir = Vector2(sign(aim_vec.x), 0)
+	else:
+		# No keys pressed: default to the last horizontal direction looked at
+		aim_dir = last_horizontal_dir
+
 		
 		# Rotate the gun pivot to look in the aim direction
-		rotation_offset.rotation = aim_dir.angle()
+	rotation_offset.rotation = aim_dir.angle()
 		
 		# Prevent the gun from looking upside down when aiming left
-		if aim_dir.x < 0:
-			sprite_2d.flip_v = true
-		else:
-			sprite_2d.flip_v = false
+	if aim_dir.x < 0:
+		sprite_2d.flip_v = true
+	else:
+		sprite_2d.flip_v = false
 			
 	if Input.is_action_just_pressed("shoot") and can_shoot:
 		_shoot()
+		print(aim_vec)
 		can_shoot = false
 		$ShootTimer.start()
 
