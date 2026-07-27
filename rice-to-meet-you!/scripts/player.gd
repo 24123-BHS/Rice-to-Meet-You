@@ -90,9 +90,9 @@ func _physics_process(delta: float) -> void:
 
 func update_animation(dir: Vector2):
 	# If no buttons are pressed, default to a neutral look direction
-	if dir == Vector2.ZERO:
+	if dir == Vector2.ZERO and in_air == false:
 		# You can let the last played animation continue or play an idle state
-		animation.play("jump")
+		animation.play("idle_right")
 		
 		# Normalize and round the vector to snap to strict 8-way coordinates (-1, 0, or 1)
 	var snap_dir = dir.normalized().round()
