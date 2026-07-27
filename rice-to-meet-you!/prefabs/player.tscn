@@ -269,7 +269,7 @@ position_smoothing_enabled = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=306289379]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_4dohe")
-animation = &"idle_right"
+animation = &"run_right"
 autoplay = "idle_right"
 
 [node name="jumpsound" type="AudioStreamPlayer" parent="." unique_id=1005294404]
