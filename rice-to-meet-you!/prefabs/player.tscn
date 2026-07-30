@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://jkf7jpbbecld" path="res://sprites/spritesheet-characters-default.png" id="3_r66lb"]
 [ext_resource type="Texture2D" uid="uid://d12ww1b1pp5dr" path="res://sprites/idle_right (1).png" id="3_u51tk"]
 [ext_resource type="AudioStream" uid="uid://b5fdyey8up44q" path="res://Sounds/sfx_disappear.ogg" id="4_1txc5"]
+[ext_resource type="Texture2D" uid="uid://cnv80ffyaqox3" path="res://sprites/Run_Right.png" id="4_kbsxf"]
 [ext_resource type="AudioStream" uid="uid://cgyhauy4k5yty" path="res://Sounds/sfx_jump.ogg" id="5_ht1c8"]
 [ext_resource type="PackedScene" uid="uid://dwdp8ne3lsw2f" path="res://prefabs/gun.tscn" id="6_g2jcq"]
 
@@ -23,7 +24,7 @@ region = Rect2(256, 6, 128, 128)
 atlas = ExtResource("3_r66lb")
 region = Rect2(384, 6, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x0bak"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gf0v6"]
 atlas = ExtResource("3_u51tk")
 region = Rect2(0, 0, 128, 128)
 
@@ -95,21 +96,21 @@ region = Rect2(384, 266, 128, 127)
 atlas = ExtResource("3_r66lb")
 region = Rect2(256, 266, 128, 127)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0bak"]
+atlas = ExtResource("4_kbsxf")
+region = Rect2(0, 0, 128, 128)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_22xyk"]
-atlas = ExtResource("3_r66lb")
-region = Rect2(512, 6, 128, 128)
+atlas = ExtResource("4_kbsxf")
+region = Rect2(128, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r3tw4"]
-atlas = ExtResource("3_r66lb")
-region = Rect2(384, 6, 128, 128)
+atlas = ExtResource("4_kbsxf")
+region = Rect2(256, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nmymu"]
-atlas = ExtResource("3_r66lb")
-region = Rect2(640, 6, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gf0v6"]
-atlas = ExtResource("3_r66lb")
-region = Rect2(0, 134, 128, 128)
+atlas = ExtResource("4_kbsxf")
+region = Rect2(384, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cv2ms"]
 atlas = ExtResource("3_r66lb")
@@ -146,7 +147,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x0bak")
+"texture": SubResource("AtlasTexture_gf0v6")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ay5dx")
@@ -225,6 +226,9 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_x0bak")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_22xyk")
 }, {
 "duration": 1.0,
@@ -232,13 +236,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nmymu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gf0v6")
 }],
 "loop": true,
 "name": &"run_right",
-"speed": 18.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -257,7 +258,6 @@ animations = [{
 
 [node name="player" type="CharacterBody2D" unique_id=358164487 groups=["player"]]
 script = ExtResource("1_4dohe")
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1464831086]
 position = Vector2(0, 8)
@@ -267,9 +267,10 @@ shape = SubResource("RectangleShape2D_014kd")
 position_smoothing_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=306289379]
+texture_filter = 1
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_4dohe")
-animation = &"run_right"
+animation = &"idle_right"
 autoplay = "idle_right"
 
 [node name="jumpsound" type="AudioStreamPlayer" parent="." unique_id=1005294404]

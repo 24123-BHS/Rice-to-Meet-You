@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://45bi0v7y34fn" path="res://sprites/Gun.png" id="2_37pk5"]
 
 [node name="Gun" type="Node2D" unique_id=1779342164]
+texture_filter = 1
 script = ExtResource("1_cxs04")
 
 [node name="RotationOffset" type="Node2D" parent="." unique_id=1762006632]
