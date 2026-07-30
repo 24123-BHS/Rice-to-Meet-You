@@ -9,6 +9,168 @@
 [ext_resource type="AudioStream" uid="uid://cgyhauy4k5yty" path="res://Sounds/sfx_jump.ogg" id="5_ht1c8"]
 [ext_resource type="PackedScene" uid="uid://dwdp8ne3lsw2f" path="res://prefabs/gun.tscn" id="6_g2jcq"]
 
+[sub_resource type="Animation" id="Animation_kbsxf"]
+resource_name = "Idle_Right"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gun:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 5), Vector2(0, 3), Vector2(0, 1), Vector2(0, 3)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer:speed_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle_right"]
+}
+
+[sub_resource type="Animation" id="Animation_rgeog"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gun:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 6)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer:speed_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle_right"]
+}
+
+[sub_resource type="Animation" id="Animation_opo22"]
+resource_name = "Run_Right"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer:speed_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"run_right"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Gun:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-8, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_opo22"]
+_data = {
+&"Idle_Right": SubResource("Animation_kbsxf"),
+&"RESET": SubResource("Animation_rgeog"),
+&"Run_Right": SubResource("Animation_opo22")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_014kd"]
 size = Vector2(32, 48)
 
@@ -259,6 +421,10 @@ animations = [{
 [node name="player" type="CharacterBody2D" unique_id=358164487 groups=["player"]]
 script = ExtResource("1_4dohe")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=130345737]
+libraries/ = SubResource("AnimationLibrary_opo22")
+autoplay = &"Idle_Right"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1464831086]
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_014kd")
@@ -271,7 +437,6 @@ texture_filter = 1
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_4dohe")
 animation = &"idle_right"
-autoplay = "idle_right"
 
 [node name="jumpsound" type="AudioStreamPlayer" parent="." unique_id=1005294404]
 stream = ExtResource("3_1txc5")
@@ -291,7 +456,7 @@ wait_time = 0.2
 [node name="dash_cooldown_timer" type="Timer" parent="." unique_id=687937459]
 
 [node name="Gun" parent="." unique_id=1779342164 instance=ExtResource("6_g2jcq")]
-position = Vector2(0, 4)
+position = Vector2(0, 6)
 
 [connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="dash_cooldown_timer" to="." method="_on_dash_cooldown_timer_timeout"]
