@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://d12ww1b1pp5dr" path="res://sprites/idle_right (1).png" id="3_u51tk"]
 [ext_resource type="AudioStream" uid="uid://b5fdyey8up44q" path="res://Sounds/sfx_disappear.ogg" id="4_1txc5"]
 [ext_resource type="Texture2D" uid="uid://cnv80ffyaqox3" path="res://sprites/Run_Right.png" id="4_kbsxf"]
+[ext_resource type="Texture2D" uid="uid://dyfpyx5mwpnca" path="res://sprites/Idle_Up_Right.png" id="4_opo22"]
 [ext_resource type="AudioStream" uid="uid://cgyhauy4k5yty" path="res://Sounds/sfx_jump.ogg" id="5_ht1c8"]
+[ext_resource type="Texture2D" uid="uid://r4e2lq2nt1ku" path="res://sprites/Run_Up_Right.png" id="5_rgeog"]
 [ext_resource type="PackedScene" uid="uid://dwdp8ne3lsw2f" path="res://prefabs/gun.tscn" id="6_g2jcq"]
 
 [sub_resource type="Animation" id="Animation_kbsxf"]
@@ -59,6 +61,57 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"idle_right"]
+}
+
+[sub_resource type="Animation" id="Animation_sd3sa"]
+resource_name = "Idle_Up_Right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle_up_right"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer:speed_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Gun:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 12), Vector2(0, 10), Vector2(0, 8), Vector2(0, 10)]
 }
 
 [sub_resource type="Animation" id="Animation_rgeog"]
@@ -161,14 +214,67 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-8, 1)]
+"values": [Vector2(0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8rb0w"]
+resource_name = "Run_Up_Right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"run_up_right"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer:speed_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Gun:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 8)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_opo22"]
 _data = {
 &"Idle_Right": SubResource("Animation_kbsxf"),
+&"Idle_Up_Right": SubResource("Animation_sd3sa"),
 &"RESET": SubResource("Animation_rgeog"),
-&"Run_Right": SubResource("Animation_opo22")
+&"Run_Right": SubResource("Animation_opo22"),
+&"Run_Up_Right": SubResource("Animation_8rb0w")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_014kd"]
@@ -211,12 +317,20 @@ atlas = ExtResource("3_r66lb")
 region = Rect2(128, 6, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q2wkl"]
-atlas = ExtResource("3_r66lb")
-region = Rect2(128, 6, 128, 128)
+atlas = ExtResource("4_opo22")
+region = Rect2(0, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f2e50"]
-atlas = ExtResource("3_r66lb")
-region = Rect2(768, 6, 128, 128)
+atlas = ExtResource("4_opo22")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3k5d"]
+atlas = ExtResource("4_opo22")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2v6jp"]
+atlas = ExtResource("4_opo22")
+region = Rect2(384, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u51tk"]
 atlas = ExtResource("3_r66lb")
@@ -275,16 +389,20 @@ atlas = ExtResource("4_kbsxf")
 region = Rect2(384, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cv2ms"]
-atlas = ExtResource("3_r66lb")
-region = Rect2(256, 139, 128, 127)
+atlas = ExtResource("5_rgeog")
+region = Rect2(0, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g56qp"]
-atlas = ExtResource("3_r66lb")
-region = Rect2(128, 266, 128, 127)
+atlas = ExtResource("5_rgeog")
+region = Rect2(128, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_axxvs"]
-atlas = ExtResource("3_r66lb")
-region = Rect2(0, 266, 128, 127)
+atlas = ExtResource("5_rgeog")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0anbp"]
+atlas = ExtResource("5_rgeog")
+region = Rect2(384, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4dohe"]
 animations = [{
@@ -341,6 +459,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_f2e50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3k5d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2v6jp")
 }],
 "loop": true,
 "name": &"idle_up_right",
@@ -412,6 +536,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_axxvs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0anbp")
 }],
 "loop": true,
 "name": &"run_up_right",

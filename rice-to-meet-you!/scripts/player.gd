@@ -121,11 +121,12 @@ func update_animation(dir: Vector2):
 	elif x_sign == 0 and y_sign > 0:
 		animation.play("idle_down")           # Straight Down
 	elif x_sign > 0 and y_sign < 0 and abs(velocity.x) > 0.1 and is_x_locked == false:
-		animation.play("run_up_right")        # Run Diagonal Up-Right / Up-Left
+		animation_player.play("Run_Up_Right")        # Run Diagonal Up-Right / Up-Left
+		print("upright")
 	elif x_sign > 0 and y_sign > 0 and abs(velocity.x) > 0.1 and is_x_locked == false:
 		animation.play("run_down_right")      # Run Diagonal Down-Right / Down-Left
 	elif x_sign > 0 and y_sign < 0:
-		animation.play("idle_up_right")       # Diagonal Up-Right / Up-Left
+		animation_player.play("Idle_Up_Right")       # Diagonal Up-Right / Up-Left
 	elif x_sign > 0 and y_sign > 0:
 		animation.play("idle_down_right")     # Diagonal Down-Right / Down-Left
 	elif x_sign > 0 and y_sign == 0 or x_sign == 0 and y_sign == 0:
