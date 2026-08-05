@@ -117,7 +117,7 @@ func update_animation(dir: Vector2):
 		animation_player.play("Run_Right")           # Run Right / Left
 		print("run")
 	elif x_sign == 0 and y_sign < 0:
-		animation.play("idle_up")             # Straight Up
+		animation_player.play("Idle_Up")             # Straight Up
 	elif x_sign == 0 and y_sign > 0:
 		animation.play("idle_down")           # Straight Down
 	elif x_sign > 0 and y_sign < 0 and abs(velocity.x) > 0.1 and is_x_locked == false:
