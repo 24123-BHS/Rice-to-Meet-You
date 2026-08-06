@@ -111,15 +111,13 @@ func update_animation(dir: Vector2):
 
 
 	# Combine X and Y states to find the combination
-	if in_air == true:
-		animation.play("jump")
-	elif x_sign > 0 and y_sign == 0 and abs(velocity.x) > 0.1 and is_x_locked == false:
+	if x_sign > 0 and y_sign == 0 and abs(velocity.x) > 0.1 and is_x_locked == false:
 		animation_player.play("Run_Right")           # Run Right / Left
 		print("run")
 	elif x_sign == 0 and y_sign < 0:
 		animation_player.play("Idle_Up")             # Straight Up
 	elif x_sign == 0 and y_sign > 0:
-		animation.play("idle_down")           # Straight Down
+		animation_player.play("Idle_Down")           # Straight Down
 	elif x_sign > 0 and y_sign < 0 and abs(velocity.x) > 0.1 and is_x_locked == false:
 		animation_player.play("Run_Up_Right")        # Run Diagonal Up-Right / Up-Left
 	elif x_sign > 0 and y_sign > 0 and abs(velocity.x) > 0.1 and is_x_locked == false:

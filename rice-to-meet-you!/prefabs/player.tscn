@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://03heaxibq4ly"]
 
 [ext_resource type="Script" uid="uid://bavdmvgpalcmi" path="res://scripts/player.gd" id="1_4dohe"]
+[ext_resource type="Texture2D" uid="uid://7k5gtl3xa4fe" path="res://sprites/Idle_Down.png" id="2_llb5v"]
 [ext_resource type="AudioStream" uid="uid://bfnysjef0host" path="res://Sounds/sfx_jump-high.ogg" id="3_1txc5"]
 [ext_resource type="Texture2D" uid="uid://jkf7jpbbecld" path="res://sprites/spritesheet-characters-default.png" id="3_r66lb"]
 [ext_resource type="Texture2D" uid="uid://m3cqsrpeee5m" path="res://sprites/Idle_Down_Right.png" id="3_sd3sa"]
@@ -13,6 +14,57 @@
 [ext_resource type="Texture2D" uid="uid://co0bj0vcr1gnj" path="res://sprites/Idle_Up.png" id="5_m2qjg"]
 [ext_resource type="Texture2D" uid="uid://r4e2lq2nt1ku" path="res://sprites/Run_Up_Right.png" id="5_rgeog"]
 [ext_resource type="PackedScene" uid="uid://dwdp8ne3lsw2f" path="res://prefabs/gun.tscn" id="6_g2jcq"]
+
+[sub_resource type="Animation" id="Animation_lulei"]
+resource_name = "Idle_Down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle_down"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer:speed_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Gun:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 2), Vector2(0, 0), Vector2(0, -2), Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_llb5v"]
 resource_name = "Idle_Down_Right"
@@ -218,6 +270,9 @@ tracks/3/keys = {
 "update": 1,
 "values": [Vector2(0, 10), Vector2(0, 8), Vector2(0, 6), Vector2(0, 8)]
 }
+
+[sub_resource type="Animation" id="Animation_edtk3"]
+resource_name = "Jump"
 
 [sub_resource type="Animation" id="Animation_rgeog"]
 length = 0.001
@@ -426,10 +481,12 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_opo22"]
 _data = {
+&"Idle_Down": SubResource("Animation_lulei"),
 &"Idle_Down_Right": SubResource("Animation_llb5v"),
 &"Idle_Right": SubResource("Animation_kbsxf"),
 &"Idle_Up": SubResource("Animation_x0bak"),
 &"Idle_Up_Right": SubResource("Animation_sd3sa"),
+&"Jump": SubResource("Animation_edtk3"),
 &"RESET": SubResource("Animation_rgeog"),
 &"Run_Down_Right": SubResource("Animation_m2qjg"),
 &"Run_Right": SubResource("Animation_opo22"),
@@ -439,9 +496,21 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_014kd"]
 size = Vector2(32, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sd3sa"]
-atlas = ExtResource("3_r66lb")
-region = Rect2(256, 6, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0gq2"]
+atlas = ExtResource("2_llb5v")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n05fx"]
+atlas = ExtResource("2_llb5v")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84k71"]
+atlas = ExtResource("2_llb5v")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xpr7"]
+atlas = ExtResource("2_llb5v")
+region = Rect2(384, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_btr86"]
 atlas = ExtResource("3_sd3sa")
@@ -587,7 +656,16 @@ region = Rect2(384, 0, 128, 128)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sd3sa")
+"texture": SubResource("AtlasTexture_y0gq2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n05fx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84k71")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xpr7")
 }],
 "loop": true,
 "name": &"idle_down",
