@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bvgk74jo512l6"]
 
 [ext_resource type="Script" uid="uid://b02wicooiq83c" path="res://scripts/bullet.gd" id="2_7rc6x"]
-[ext_resource type="Texture2D" uid="uid://dkp0ypgsdrajs" path="res://icon.svg" id="2_lv25w"]
+[ext_resource type="Texture2D" uid="uid://chnx5ijpsc1ly" path="res://sprites/Rice.png" id="2_44iiu"]
 
 [sub_resource type="Animation" id="Animation_fh0yl"]
 length = 0.001
@@ -43,7 +43,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(0.5, 2),
 "update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(0.2, 0.1)]
+"values": [Vector2(1e-05, 1e-05), Vector2(0.5, 0.25)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -94,7 +94,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lv25w"]
-size = Vector2(130.00002, 130.00002)
+size = Vector2(16, 10.666672)
 
 [node name="Bullet" type="Area2D" unique_id=1286352415 groups=["Bullet"]]
 modulate = Color(1, 1, 1, 0)
@@ -102,17 +102,17 @@ z_index = -1
 texture_filter = 1
 scale = Vector2(1e-05, 1e-05)
 script = ExtResource("2_7rc6x")
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=157583752]
 show_behind_parent = true
-texture = ExtResource("2_lv25w")
+scale = Vector2(1.4374999, 1.8750001)
+texture = ExtResource("2_44iiu")
 
 [node name="shadow" type="Sprite2D" parent="." unique_id=317354824]
 modulate = Color(0, 0, 0, 0.21568628)
 show_behind_parent = true
 z_index = -1
-texture = ExtResource("2_lv25w")
+texture = ExtResource("2_44iiu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=329678721]
 libraries/ = SubResource("AnimationLibrary_7rc6x")
@@ -125,8 +125,8 @@ one_shot = true
 autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1073199719]
-position = Vector2(-7.152556e-06, -7.152556e-06)
-scale = Vector2(0.99999976, 0.99999976)
+position = Vector2(2.6666694, 2.5431316e-06)
+scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_lv25w")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

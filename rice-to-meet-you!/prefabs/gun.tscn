@@ -20,7 +20,7 @@ z_index = -1
 texture = ExtResource("2_37pk5")
 
 [node name="shoot_pos" type="Marker2D" parent="RotationOffset/Sprite2D" unique_id=34408795]
-position = Vector2(38, 0)
+position = Vector2(31.428574, 8.5149486e-07)
 
 [node name="ShootTimer" type="Timer" parent="." unique_id=491484229]
 one_shot = true
