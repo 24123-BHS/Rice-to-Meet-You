@@ -5,8 +5,16 @@ extends Node2D
 @export var speed = 100
 @export var health: int = 30
 
+var last_position_x: float
+
+func _ready() -> void:
+	last_position_x = global_position.x
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	path_follow.progress += speed * delta
+	# Move along the path (change '+' to '-' if going backwards)
 	path_follow.progress += speed * delta
 
 func _on_body_entered(body: Node2D) -> void:
@@ -21,6 +29,7 @@ func _on_body_entered(body: Node2D) -> void:
 	#if area.is_in_group("Bullet"):
 		#queue_free()
 		#print("poof")
+		
 		
 func take_damage(amount: int):
 	health -= amount

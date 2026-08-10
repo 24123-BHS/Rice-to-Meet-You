@@ -77,6 +77,7 @@ animations = [{
 size = Vector2(32, 32)
 
 [node name="enemy" type="Node2D" unique_id=1671639136 groups=["enemies"]]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_yfjof")
 metadata/_edit_group_ = true
 

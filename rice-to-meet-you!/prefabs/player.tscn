@@ -494,7 +494,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_014kd"]
-size = Vector2(32, 48)
+size = Vector2(20, 47)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y0gq2"]
 atlas = ExtResource("2_llb5v")
@@ -826,7 +826,7 @@ libraries/ = SubResource("AnimationLibrary_opo22")
 autoplay = &"Idle_Right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1464831086]
-position = Vector2(0, 8)
+position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_014kd")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1542876896]
