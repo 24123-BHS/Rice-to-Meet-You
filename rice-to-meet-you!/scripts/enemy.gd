@@ -4,18 +4,18 @@ extends Node2D
 #will be speed in pixels per second
 @export var speed = 100
 @export var health: int = 30
+@onready var sprite_2d: AnimatedSprite2D = $Path2D/PathFollow2D/Area2D/Sprite2D
 
-var last_position_x: float
-
-func _ready() -> void:
-	last_position_x = global_position.x
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	path_follow.progress += speed * delta
 	# Move along the path (change '+' to '-' if going backwards)
-	path_follow.progress += speed * delta
+	if path_follow.progress_ratio >= 0.5:
+		sprite_2d.flip_h = false
+	else:
+		sprite_2d.flip_h = true
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "player":
