@@ -4,7 +4,7 @@ extends Node2D
 #will be speed in pixels per second
 @export var speed = 100
 @export var health: int = 30
-@onready var sprite_2d: AnimatedSprite2D = $Path2D/PathFollow2D/Area2D/Sprite2D
+@onready var animation: AnimatedSprite2D = $Path2D/PathFollow2D/Area2D/AnimatedSprite2D
 
 
 
@@ -13,9 +13,9 @@ func _process(delta: float) -> void:
 	path_follow.progress += speed * delta
 	# Move along the path (change '+' to '-' if going backwards)
 	if path_follow.progress_ratio >= 0.5:
-		sprite_2d.flip_h = false
+		animation.flip_h = false
 	else:
-		sprite_2d.flip_h = true
+		animation.flip_h = true
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "player":
@@ -35,4 +35,18 @@ func take_damage(amount: int):
 	health -= amount
 	print("Enemy took ", amount, " damage! HP left: ", health)
 	if health <= 0:
-		queue_free() # Enemy is defeated
+		die()
+
+func die():
+	# Stop movement or logic
+	set_process(false)
+	set_physics_process(false)
+	
+	# Play the death animation
+	animation.play("die")
+	
+	# Wait for the animation to finish
+	await animation.animation_finished
+	
+	# Delete the enemy node
+	queue_free()

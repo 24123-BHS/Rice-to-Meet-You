@@ -818,7 +818,6 @@ animations = [{
 }]
 
 [node name="player" type="CharacterBody2D" unique_id=358164487 groups=["player"]]
-position = Vector2(-1, 0)
 script = ExtResource("1_4dohe")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=130345737]

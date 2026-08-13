@@ -5,7 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bj5v0jlsdj2a8" path="res://prefabs/spike.tscn" id="3_4nkto"]
 [ext_resource type="PackedScene" uid="uid://b5kt88kiq4wbh" path="res://prefabs/portal.tscn" id="4_5xbjy"]
 [ext_resource type="Texture2D" uid="uid://dvepj4wkqbo6h" path="res://sprites/tilemap.png" id="5_a1scl"]
-[ext_resource type="PackedScene" uid="uid://dorw4wboecrtq" path="res://prefabs/enemy.tscn" id="6_fcfvj"]
+[ext_resource type="PackedScene" uid="uid://dorw4wboecrtq" path="res://prefabs/groundenemy.tscn" id="6_fcfvj"]
+[ext_resource type="PackedScene" uid="uid://cdwiyvp8jk7s6" path="res://prefabs/flyingenemy.tscn" id="7_2aftt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fcfvj"]
 texture = ExtResource("5_a1scl")
@@ -241,3 +242,6 @@ tile_set = SubResource("TileSet_pa8r4")
 
 [node name="enemy" parent="." unique_id=1671639136 instance=ExtResource("6_fcfvj")]
 position = Vector2(799, 300)
+
+[node name="flyingenemy" parent="." unique_id=1514930568 instance=ExtResource("7_2aftt")]
+position = Vector2(1154, 104)
