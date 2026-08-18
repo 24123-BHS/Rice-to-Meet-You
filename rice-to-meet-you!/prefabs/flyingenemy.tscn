@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bsy2wlxgdsffq" path="res://scripts/flyingenemy.gd" id="1_q6ykg"]
 [ext_resource type="Texture2D" uid="uid://dx8l7jgmxlj7m" path="res://sprites/Enemy3-Fly.png" id="2_6hy20"]
 [ext_resource type="Texture2D" uid="uid://dfb4nbr8b3odc" path="res://sprites/Enemy3-AttackSmashStart.png" id="3_6hy20"]
+[ext_resource type="Texture2D" uid="uid://cf5ql6ky7dso6" path="res://sprites/Enemy3-SmashEnd.png" id="4_ppjxo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ppjxo"]
 atlas = ExtResource("2_6hy20")
@@ -84,6 +85,38 @@ region = Rect2(640, 0, 64, 64)
 atlas = ExtResource("3_6hy20")
 region = Rect2(704, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8c170"]
+atlas = ExtResource("4_ppjxo")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sag5j"]
+atlas = ExtResource("4_ppjxo")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrh5f"]
+atlas = ExtResource("4_ppjxo")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bbxj"]
+atlas = ExtResource("4_ppjxo")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cf8iw"]
+atlas = ExtResource("4_ppjxo")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xm8ur"]
+atlas = ExtResource("4_ppjxo")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3be05"]
+atlas = ExtResource("4_ppjxo")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkwlw"]
+atlas = ExtResource("4_ppjxo")
+region = Rect2(448, 0, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_sfohq"]
 animations = [{
 "frames": [{
@@ -155,6 +188,35 @@ animations = [{
 "loop": false,
 "name": &"pre_smash",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8c170")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sag5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrh5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bbxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cf8iw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xm8ur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3be05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkwlw")
+}],
+"loop": true,
+"name": &"smash",
+"speed": 10.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ej63e"]
@@ -170,10 +232,8 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D" unique_id=477112653]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_sfohq")
-animation = &"pre_smash"
+animation = &"smash"
 autoplay = "default"
-frame = 10
-frame_progress = 0.28999013
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1434418472]
 position = Vector2(-1, 4)

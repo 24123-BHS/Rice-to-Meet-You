@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var speed: float = 100.0
-@export var slam_speed: float = 800.0
+@export var slam_speed: float = 300.0
 @export var return_speed: float = 200.0
 @export var pause_duration: float = 0.5 # Time spent shaking/pausing before drop
 
@@ -47,6 +47,7 @@ func _physics_process(delta: float) -> void:
 		State.SLAMMING:
 			# Move straight down rapidly
 			await animated.animation_finished
+			animated.play("smash")
 			global_position.y += slam_speed * delta
 			
 			# Check if we hit the floor
