@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://brbbyjv2h7tsv"
+path="res://.godot/imported/impactMetal_001.ogg-83abfbe09bd46e3a47b03c062e2b6f5d.oggvorbisstr"
+
+[deps]
+
+source_file="res://New Sounds/kenney_sci-fi-sounds/Audio/impactMetal_001.ogg"
+dest_files=["res://.godot/imported/impactMetal_001.ogg-83abfbe09bd46e3a47b03c062e2b6f5d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

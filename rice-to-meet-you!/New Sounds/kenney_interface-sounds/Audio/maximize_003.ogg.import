@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://j6w5b56itfx3"
+path="res://.godot/imported/maximize_003.ogg-ca904e4796224f108d243cbeadd7381b.oggvorbisstr"
+
+[deps]
+
+source_file="res://New Sounds/kenney_interface-sounds/Audio/maximize_003.ogg"
+dest_files=["res://.godot/imported/maximize_003.ogg-ca904e4796224f108d243cbeadd7381b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

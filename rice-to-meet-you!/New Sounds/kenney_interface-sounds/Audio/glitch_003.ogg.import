@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://deflly0n31im5"
+path="res://.godot/imported/glitch_003.ogg-4a6094f0a258f7046411dba022129474.oggvorbisstr"
+
+[deps]
+
+source_file="res://New Sounds/kenney_interface-sounds/Audio/glitch_003.ogg"
+dest_files=["res://.godot/imported/glitch_003.ogg-4a6094f0a258f7046411dba022129474.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

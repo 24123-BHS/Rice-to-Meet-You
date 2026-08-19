@@ -16,17 +16,21 @@ func _process(_delta: float) -> void:
 
 
 func _on_start_pressed() -> void:
+	AudioStreamManager.play("res://New Sounds/kenney_interface-sounds/Audio/click_001.ogg")
 	get_tree().change_scene_to_file("res://scenes/level_menu.tscn")
 
 
 func _on_options_pressed() -> void:
+	AudioStreamManager.play("res://New Sounds/kenney_interface-sounds/Audio/click_001.ogg")
 	main_buttons.visible = false
 	options.visible = true
 
 
 func _on_leave_pressed() -> void:
+	AudioStreamManager.play("res://New Sounds/kenney_interface-sounds/Audio/click_001.ogg")
 	get_tree().quit()
 	
 
 func _on_back_options_pressed() -> void:
+	AudioStreamManager.play("res://New Sounds/kenney_interface-sounds/Audio/back_003.ogg")
 	_ready()

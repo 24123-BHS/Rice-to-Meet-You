@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dvg6i6ye3hv3t"
+path="res://.godot/imported/spaceEngineLow_002.ogg-843d17f425be06666a46e002d5f278c0.oggvorbisstr"
+
+[deps]
+
+source_file="res://New Sounds/kenney_sci-fi-sounds/Audio/spaceEngineLow_002.ogg"
+dest_files=["res://.godot/imported/spaceEngineLow_002.ogg-843d17f425be06666a46e002d5f278c0.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
