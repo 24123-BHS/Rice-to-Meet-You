@@ -21,14 +21,30 @@ func _on_stream_finished(stream):
 	# When finished playing a stream, make the player available again.
 	available.append(stream)
 
+# 1. Accept an optional volume parameter (default is 0.0 dB)
+func play(sound_path: String, volume_db: float = 0.0):
+	queue.append({"path": sound_path, "volume": volume_db})
 
-func play(sound_path):
-	queue.append(sound_path)
+
+#func play(sound_path):
+	#queue.append(sound_path)
 
 
 func _process(delta):
 	# Play a queued sound if any players are available.
 	if not queue.is_empty() and not available.is_empty():
-		available[0].stream = load(queue.pop_front())
-		available[0].play()
-		available.pop_front()
+		var sound_data = queue.pop_front()
+		var player = available.pop_front()
+		
+		# FIXED: Extract the string path from the dictionary
+		player.stream = load(sound_data["path"])
+		# FIXED: Extract the volume from the dictionary
+		player.volume_db = sound_data["volume"] 
+		
+		player.play()
+		
+		
+		
+		#available[0].stream = load(queue.pop_front())
+		#available[0].play()
+		#available.pop_front()

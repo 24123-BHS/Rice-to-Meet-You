@@ -3,6 +3,12 @@
 [ext_resource type="Script" uid="uid://cmtvs6xxpuv8i" path="res://scripts/gun.gd" id="1_cxs04"]
 [ext_resource type="Texture2D" uid="uid://45bi0v7y34fn" path="res://sprites/Gun.png" id="2_37pk5"]
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_cxs04"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_37pk5"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+
 [node name="Gun" type="Node2D" unique_id=1779342164]
 texture_filter = 1
 script = ExtResource("1_cxs04")
@@ -24,5 +30,19 @@ position = Vector2(31.428574, 8.5149486e-07)
 
 [node name="ShootTimer" type="Timer" parent="." unique_id=491484229]
 one_shot = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=910325244]
+texture_filter = 1
+position = Vector2(43, 0)
+rotation = -1.5707964
+emitting = false
+amount = 15
+texture = SubResource("CanvasTexture_cxs04")
+lifetime = 0.15000000000000002
+one_shot = true
+speed_scale = 30.0
+explosiveness = 1.0
+fixed_fps = 12
+process_material = SubResource("ParticleProcessMaterial_37pk5")
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

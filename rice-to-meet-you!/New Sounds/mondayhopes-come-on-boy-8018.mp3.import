@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c3vfgrlsppa01"
+path="res://.godot/imported/mondayhopes-come-on-boy-8018.mp3-925c6f80914c8023ad0e17bc907824bc.mp3str"
+
+[deps]
+
+source_file="res://New Sounds/mondayhopes-come-on-boy-8018.mp3"
+dest_files=["res://.godot/imported/mondayhopes-come-on-boy-8018.mp3-925c6f80914c8023ad0e17bc907824bc.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

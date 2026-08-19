@@ -22,9 +22,6 @@ const DASH_SPEED = 900.0
 var dashing = false
 var can_dash = true
 
-var min_pitch: float = 0.85
-var max_pitch: float = 1.15
-
 var step_timer = 0.0
 var step_interval = 0.35 # Time in seconds between steps
 
@@ -33,7 +30,7 @@ func _physics_process(delta: float) -> void:
 	update_animation(input_dir)
 	
 	 # Check if moving and touching the ground
-	if input_dir != Vector2.ZERO and is_on_floor():
+	if input_dir != Vector2.ZERO and abs(velocity.x) > 0.1 and is_x_locked == false and is_on_floor():
 		step_timer += delta
 		if step_timer >= step_interval:
 			AudioStreamManager.play("res://New Sounds/kenney_impact-sounds/Audio/footstep_grass_000.ogg")

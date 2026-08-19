@@ -4,6 +4,7 @@ var level: int = 1
 var is_unlocked: bool = false
 
 func _ready() -> void:
+	AudioStreamManager.play("res://New Sounds/mondayhopes-come-on-boy-8018.mp3", -20)
 	level = get_index()+1
 	text = str( level)
 	is_unlocked = level <= Levelmanager.level_unlocked
@@ -12,5 +13,4 @@ func _ready() -> void:
 func _pressed() -> void:
 	if is_unlocked:
 		Levelmanager.current_level = level
-		AudioStreamManager.play("res://New Sounds/kenney_interface-sounds/Audio/confirmation_001.ogg")
 		get_tree().call_deferred("change_scene_to_file", Levelmanager._load_level(level))

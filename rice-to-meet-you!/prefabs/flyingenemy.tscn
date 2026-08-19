@@ -214,7 +214,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lkwlw")
 }],
-"loop": true,
+"loop": false,
 "name": &"smash",
 "speed": 10.0
 }]
@@ -234,13 +234,16 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_sfohq")
 animation = &"smash"
 autoplay = "default"
+frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1434418472]
 position = Vector2(-1, 4)
 shape = SubResource("CircleShape2D_ej63e")
 
 [node name="RayCast2D" type="RayCast2D" parent="Area2D" unique_id=1050221637]
-target_position = Vector2(0, 400)
+target_position = Vector2(0, 44)
 
 [node name="PauseTimer" type="Timer" parent="Area2D" unique_id=1614359785]
 one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

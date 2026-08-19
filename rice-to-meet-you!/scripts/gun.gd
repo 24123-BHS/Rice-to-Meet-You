@@ -6,6 +6,9 @@ const bullet_scene = preload("res://prefabs/bullet.tscn")
 @onready var shadow: Sprite2D = $RotationOffset/Sprite2D/shadow
 @onready var shoot_pos: Marker2D = $RotationOffset/Sprite2D/shoot_pos
 @onready var sprite_2d: Sprite2D = $RotationOffset/Sprite2D
+@onready var gpu_particles_2d: GPUParticles2D = $GPUParticles2D
+
+
 
 var time_between_shot: float = 0.25
 var aim_dir = Vector2(1,0) # Default to aiming right
@@ -45,6 +48,7 @@ func _process(_delta: float) -> void:
 		sprite_2d.flip_v = false
 			
 	if Input.is_action_just_pressed("shoot") and can_shoot:
+		AudioStreamManager.play("res://New Sounds/kenney_sci-fi-sounds/Audio/laserRetro_003.ogg")
 		_shoot()
 		print(aim_vec)
 		can_shoot = false
@@ -58,6 +62,8 @@ func _shoot():
 	new_bullet.direction = aim_dir
 	new_bullet.global_rotation = shoot_pos.global_rotation
 	new_bullet.speed = 400
+	# Your shooting logic here
+	gpu_particles_2d.restart() 
 	print(aim_dir.angle())
 
 func _on_shoot_timer_timeout() -> void:

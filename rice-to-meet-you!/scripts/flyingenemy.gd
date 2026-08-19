@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var speed: float = 100.0
-@export var slam_speed: float = 300.0
+@export var slam_speed: float = 400.0
 @export var return_speed: float = 200.0
 @export var pause_duration: float = 0.5 # Time spent shaking/pausing before drop
 
@@ -46,8 +46,6 @@ func _physics_process(delta: float) -> void:
 
 		State.SLAMMING:
 			# Move straight down rapidly
-			await animated.animation_finished
-			animated.play("smash")
 			global_position.y += slam_speed * delta
 			
 			# Check if we hit the floor
@@ -71,6 +69,15 @@ func _on_pause_timer_timeout() -> void:
 	# Reset sprite offset from shaking
 	$Area2D/AnimatedSprite2D.position = Vector2.ZERO 
 	
+	animated.play("smash")
+	
 	# Begin the drop
 	current_state = State.SLAMMING
 	raycast.force_raycast_update()
+
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.name == "player":
+		body.respawn()
+		print("Ouch")
