@@ -8,6 +8,7 @@ var queue = []  # The queue of sounds to play.
 
 
 func _ready():
+	AudioStreamManager.play("res://New Sounds/mondayhopes-come-on-boy-8018.mp3", -10)
 	# Create the pool of AudioStreamPlayer nodes.
 	for i in num_players:
 		var player = AudioStreamPlayer.new()
@@ -30,7 +31,7 @@ func play(sound_path: String, volume_db: float = 0.0):
 	#queue.append(sound_path)
 
 
-func _process(delta):
+func _process(_delta):
 	# Play a queued sound if any players are available.
 	if not queue.is_empty() and not available.is_empty():
 		var sound_data = queue.pop_front()

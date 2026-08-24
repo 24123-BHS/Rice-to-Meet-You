@@ -12,4 +12,5 @@ func _process(_delta: float) -> void:
 
 
 func _on_level1_pressed() -> void:
+	AudioStreamManager.play("res://New Sounds/kenney_interface-sounds/Audio/maximize_006.ogg")
 	get_tree().change_scene_to_file("res://scenes/level_1.tscn")

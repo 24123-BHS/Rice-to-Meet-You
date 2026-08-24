@@ -48,7 +48,7 @@ func _process(_delta: float) -> void:
 		sprite_2d.flip_v = false
 			
 	if Input.is_action_just_pressed("shoot") and can_shoot:
-		AudioStreamManager.play("res://New Sounds/kenney_sci-fi-sounds/Audio/laserRetro_003.ogg")
+		AudioStreamManager.play("res://New Sounds/kenney_sci-fi-sounds/Audio/laserRetro_003.ogg", -10)
 		_shoot()
 		print(aim_vec)
 		can_shoot = false

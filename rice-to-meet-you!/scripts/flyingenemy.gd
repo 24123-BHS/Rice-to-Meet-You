@@ -4,6 +4,9 @@ extends Node2D
 @export var slam_speed: float = 400.0
 @export var return_speed: float = 200.0
 @export var pause_duration: float = 0.5 # Time spent shaking/pausing before drop
+@export var activation_radius: float = 1000.0
+
+@export var health: int = 30
 
 @onready var raycast: RayCast2D = $Area2D/RayCast2D
 @onready var pause_timer: Timer = $Area2D/PauseTimer
@@ -30,9 +33,10 @@ func _physics_process(delta: float) -> void:
 
 	match current_state:
 		State.HOVER:
-			# 1. Float horizontally above player
-			var target_x = player.global_position.x
-			global_position.x = move_toward(global_position.x, target_x, speed * delta)
+			if global_position.distance_to(player.global_position) <= activation_radius:
+				# 1. Float horizontally above player
+				var target_x = player.global_position.x
+				global_position.x = move_toward(global_position.x, target_x, speed * delta)
 			
 			# 2. Trigger warning phase if lined up
 			if abs(global_position.x - player.global_position.x) < 5.0:
@@ -81,3 +85,27 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "player":
 		body.respawn()
 		print("Ouch")
+		
+		
+		
+func take_damage(amount: int):
+	health -= amount
+	print("Enemy took ", amount, " damage! HP left: ", health)
+	AudioStreamManager.play("res://New Sounds/kenney_impact-sounds/Audio/impactPunch_heavy_004.ogg")
+	if health <= 0:
+		AudioStreamManager.play("res://New Sounds/kenney_sci-fi-sounds/Audio/explosionCrunch_004.ogg")
+		die()
+
+func die():
+	# Stop movement or logic
+	set_process(false)
+	set_physics_process(false)
+	
+	# Play the death animation
+	animated.play("die")
+	
+	# Wait for the animation to finish
+	await animated.animation_finished
+	
+	# Delete the enemy node
+	queue_free()
