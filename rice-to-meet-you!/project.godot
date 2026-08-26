@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Platform Tutorial"
+config/name="Rice to Meet You"
 run/main_scene="uid://5070w2tohutv"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
