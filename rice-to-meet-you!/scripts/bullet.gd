@@ -20,7 +20,7 @@ func _physics_process(delta: float) -> void:
 	#queue_free()
 	
 func _on_area_entered(area: Area2D):
-	print("Hit detected on: ", area.name)
+	#print("Hit detected on: ", area.name)
 	
 	# Start looking at the immediate parent
 	var current_node = area.get_parent()
@@ -36,7 +36,7 @@ func _on_area_entered(area: Area2D):
 		current_node = current_node.get_parent()
 		
 	# If the loop finishes, it means we checked all parents and found no script
-	print("Error: Could not find any parent with a 'take_damage' method!")
+	#print("Error: Could not find any parent with a 'take_damage' method!")
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

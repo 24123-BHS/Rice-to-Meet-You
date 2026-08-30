@@ -5,6 +5,11 @@ extends CharacterBody2D
 @onready var deathsound: AudioStreamPlayer = $deathsound
 @onready var dashsound: AudioStreamPlayer = $dashsound
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var weapon_holder: Node2D = $WeaponHolder
+
+var active_weapons: Array[Node2D] = []
+var current_weapon_index: int = 0
+
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -25,6 +30,9 @@ var can_dash = true
 var step_timer = 0.0
 var step_interval = 0.35 # Time in seconds between steps
 
+func _ready() -> void:
+	refresh_unlocked_weapons()
+
 func _physics_process(delta: float) -> void:
 	var input_dir: Vector2 = Input.get_vector("left", "right", "up", "down")
 	update_animation(input_dir)
@@ -41,6 +49,7 @@ func _physics_process(delta: float) -> void:
 		# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+
 
 #asked AI
 	# Check if the player is holding down the lock key
@@ -124,7 +133,6 @@ func update_animation(dir: Vector2):
 	# Combine X and Y states to find the combination
 	if x_sign > 0 and y_sign == 0 and abs(velocity.x) > 0.1 and is_x_locked == false:
 		animation_player.play("Run_Right")           # Run Right / Left
-		print("run")
 	elif x_sign == 0 and y_sign < 0:
 		animation_player.play("Idle_Up")             # Straight Up
 	elif x_sign == 0 and y_sign > 0:
@@ -153,3 +161,43 @@ func _on_dash_timer_timeout() -> void:
 
 func _on_dash_cooldown_timer_timeout() -> void:
 	can_dash = true
+	
+func refresh_unlocked_weapons() -> void:
+	active_weapons.clear()
+	
+	for child in weapon_holder.get_children():
+		if child is Node2D:
+			# Check the global manager if this specific node name is unlocked
+			var is_unlocked = WeaponManager.unlocked_weapons.get(child.name, false)
+			
+			if is_unlocked:
+				active_weapons.append(child)
+			else:
+				# Keep locked weapon nodes completely shut off
+				child.visible = false
+				child.set_process(false)
+				child.set_physics_process(false)
+				
+	# Default to the first unlocked weapon
+	if active_weapons.size() > 0:
+		select_weapon(0)
+		
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("switch_weapon"):
+		cycle_weapon()
+
+func cycle_weapon() -> void:
+	if active_weapons.size() <= 1:
+		return
+		
+	current_weapon_index = (current_weapon_index + 1) % active_weapons.size()
+	select_weapon(current_weapon_index)
+
+func select_weapon(index: int) -> void:
+	for i in range(active_weapons.size()):
+		var weapon = active_weapons[i]
+		var is_active = (i == index)
+		
+		weapon.visible = is_active
+		weapon.set_process(is_active)
+		weapon.set_physics_process(is_active)

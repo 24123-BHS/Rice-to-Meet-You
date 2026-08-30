@@ -20,11 +20,6 @@ position = Vector2(21, -5.9604645e-07)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("2_37pk5")
 
-[node name="shadow" type="Sprite2D" parent="RotationOffset/Sprite2D" unique_id=1849124852]
-modulate = Color(0, 0, 0, 0.21568628)
-z_index = -1
-texture = ExtResource("2_37pk5")
-
 [node name="shoot_pos" type="Marker2D" parent="RotationOffset/Sprite2D" unique_id=34408795]
 position = Vector2(31.428574, 8.5149486e-07)
 
