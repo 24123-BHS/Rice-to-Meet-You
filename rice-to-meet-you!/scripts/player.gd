@@ -150,6 +150,7 @@ func update_animation(dir: Vector2):
 
 		
 func respawn():
+	is_x_locked = false
 	deathsound.play()
 	position = start_position
 	

@@ -52,10 +52,21 @@ grow_vertical = 0
 
 [node name="GridContainer" type="GridContainer" parent="CenterContainer" unique_id=455056161]
 layout_mode = 2
-columns = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 3
 
 [node name="LevelSelectButton" parent="CenterContainer/GridContainer" unique_id=10464423 instance=ExtResource("2_rj3wb")]
 layout_mode = 2
 
 [node name="LevelSelectButton2" parent="CenterContainer/GridContainer" unique_id=462953943 instance=ExtResource("2_rj3wb")]
+layout_mode = 2
+
+[node name="LevelSelectButton3" parent="CenterContainer/GridContainer" unique_id=77950797 instance=ExtResource("2_rj3wb")]
+layout_mode = 2
+
+[node name="LevelSelectButton4" parent="CenterContainer/GridContainer" unique_id=650499862 instance=ExtResource("2_rj3wb")]
+layout_mode = 2
+
+[node name="LevelSelectButton5" parent="CenterContainer/GridContainer" unique_id=908185551 instance=ExtResource("2_rj3wb")]
 layout_mode = 2

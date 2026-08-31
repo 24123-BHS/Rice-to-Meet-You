@@ -1,6 +1,6 @@
 extends Node2D
 
-const bullet_scene = preload("uid://bvgk74jo512l6")
+const bullet_scene = preload("res://prefabs/shotgun_bullet.tscn")
 
 @export var pellet_count: int = 5
 @export var spread_angle: float = 30.0
@@ -77,7 +77,7 @@ func _shoot():
 		new_bullet.direction = Vector2.RIGHT.rotated(pellet_rotation)
 		new_bullet.global_rotation = pellet_rotation
 		new_bullet.global_rotation += randf_range(-0.05, 0.05)
-		new_bullet.speed = 200
+		new_bullet.speed = 350
 	# Your shooting logic here
 	print(aim_dir.angle())
 

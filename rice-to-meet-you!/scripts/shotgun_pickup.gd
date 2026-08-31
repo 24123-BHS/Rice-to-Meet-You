@@ -8,5 +8,6 @@ func _on_body_entered(body: Node2D) -> void:
 		
 		if body.has_method("refresh_unlocked_weapons"):
 			body.refresh_unlocked_weapons()
+			body.cycle_weapon()
 		
 		queue_free()
