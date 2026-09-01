@@ -34,7 +34,7 @@ func _on_body_entered(body: Node2D) -> void:
 func take_damage(amount: int):
 	health -= amount
 	print("Enemy took ", amount, " damage! HP left: ", health)
-	AudioStreamManager.play("res://New Sounds/kenney_impact-sounds/Audio/impactSoft_heavy_000.ogg")
+	AudioStreamManager.play("res://New Sounds/kenney_impact-sounds/Audio/impactSoft_heavy_000.ogg", +5)
 	if health <= 0:
 		AudioStreamManager.play("res://New Sounds/kenney_sci-fi-sounds/Audio/slime_000.ogg")
 		die()

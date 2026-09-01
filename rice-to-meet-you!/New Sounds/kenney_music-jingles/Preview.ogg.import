@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://csqvwchogbtry"
+path="res://.godot/imported/Preview.ogg-061a0daac9da9066734367bbf54262dc.oggvorbisstr"
+
+[deps]
+
+source_file="res://New Sounds/kenney_music-jingles/Preview.ogg"
+dest_files=["res://.godot/imported/Preview.ogg-061a0daac9da9066734367bbf54262dc.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

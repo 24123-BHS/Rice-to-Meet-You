@@ -47,7 +47,7 @@ func _process(_delta: float) -> void:
 			
 		
 	if Input.is_action_just_pressed("shoot") and can_shoot:
-		AudioStreamManager.play("res://New Sounds/kenney_sci-fi-sounds/Audio/laserRetro_003.ogg", -10)
+		AudioStreamManager.play("res://New Sounds/kenney_sci-fi-sounds/Audio/laserLarge_001.ogg")
 		_shoot()
 		print(aim_vec)
 		can_shoot = false

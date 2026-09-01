@@ -3,10 +3,29 @@
 [ext_resource type="Script" uid="uid://b2gkjvns4di3e" path="res://scripts/endgame.gd" id="1_dugu8"]
 [ext_resource type="AudioStream" uid="uid://bgtgyawkhnugd" path="res://Sounds/sfx_select.ogg" id="2_577wx"]
 
-[node name="endgame" type="Node2D" unique_id=1022322852]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydmb0"]
+bg_color = Color(0.860974, 0.49566805, 0.15666202, 1)
+
+[node name="endgame" type="Control" unique_id=1388072452]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_dugu8")
 
+[node name="Panel" type="Panel" parent="." unique_id=825676438]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ydmb0")
+
 [node name="Button" type="Button" parent="." unique_id=487857285]
+layout_mode = 0
 offset_left = 528.0
 offset_top = 304.0
 offset_right = 616.0
